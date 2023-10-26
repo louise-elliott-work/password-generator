@@ -1,7 +1,23 @@
-*/ Grey box to contain all, centered on page with margins/*
+/* Header styles */
 
-*/ Heading of Password Generator centered horizontally at the top/*
+h1 h2 {
+    color: darkslategrey;
+}
 
-*/ White box within grey box, centered horizontally and vertically, containing the Generate a Password title, justified left horizontally, an outer box with top and bottom borders only containing the Your Secure Password box, centered, with a dash style border and the text Your Secure Password, centered/*
+/* Grey box to contain all, centered on page with margins */
 
-*/ A rounded red box, centered,  with the words Generate Password/*
+/* Heading of Password Generator centered horizontally at the top */
+
+/* White box within grey box, centered horizontally and vertically, containing the Generate a Password title, justified left horizontally, an outer box with top and bottom borders only containing the Your Secure Password box, centered, with a dash style border and the text Your Secure Password, centered */
+
+.result {
+    color: grey;
+}
+
+/* A rounded red box, centered, with the words Generate Password */
+.button {
+    background-color: #ad0909;
+    color: white;
+    padding: 12px 30px 12px 30px;
+    border-radius: 50px;
+}
