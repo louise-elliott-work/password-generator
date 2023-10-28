@@ -115,11 +115,8 @@ generateBtn.addEventListener('click', writePassword);
 
 //MY PSEUDOCODING
 
-// Alert for introduction message.
-alert ("Welcome to the Password Generator!  Select from the following options to generate your own personalised password.");
-
 // Function to prompt user for password options.
-function getPasswordOptions () {
+generateBtn.onclick = function getPasswordOptions () {
 
   //Prompt for number of characters. If <8 or >128, then show message about requirements and instruct to try again. If between 8-128, store in variable and continue to next prompt.
   function getPasswordLength () {
