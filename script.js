@@ -113,16 +113,13 @@ passwordText.value = password;
 generateBtn.addEventListener('click', writePassword);
 
 
-  //MY PSEUDOCODING
+//MY PSEUDOCODING
 
-  //Alert for introduction message.
-
+// Alert for introduction message.
 alert ("Welcome to the Password Generator!  Select from the following options to generate your own personalised password.");
 
-// Function to prompt user for password options
+// Function to prompt user for password options.
 function getPasswordOptions () {
-
-var passwordLengthInteger;
 
   //Prompt for number of characters. If <8 or >128, print error handler 'try again' message. If between 8-128, store in variable and continue to next prompt.
   function getPasswordLength () {
@@ -141,7 +138,7 @@ var passwordLengthInteger;
 
   //Prompt for whether you want to include lowercase characters. Log answer in variable and continue to next prompt.
   function checkLowercase () {
-    var passwordLowercase = confirm ("Your password will be " + passwordLengthInteger + " characters long.  Would you like it to contain lower case characters?  Click OK for yes or Cancel for no.")
+    var passwordLowercase = confirm ("Would you like it to contain lower case characters?  Click OK for yes or Cancel for no.")
     if (passwordLowercase) {
       console.log ("Password will contain lower case letters."); }
     else {
@@ -150,43 +147,46 @@ var passwordLengthInteger;
   }
   checkLowercase();
 
+  //Prompt for whether you want to include uppercase characters. Log answer in variable and continue to next prompt.
+  function checkUppercase () {
+    var passwordUppercase = confirm ("And would you like it to contain upper case characters?  Click OK for yes or Cancel for no.")
+    if (passwordUppercase) {
+      console.log ("Password will contain upper case letters."); }
+    else {
+      console.log ("Password will not contain upper case letters.");
+    }
+  }
+  checkUppercase();
+
+  //Prompt for whether you want to include numeric characters. Log answer in variable and continue to next prompt.
+  function checkNumeric () {
+    var passwordNumeric = confirm ("And would you like it to contain numeric characters?  Click OK for yes or Cancel for no.")
+    if (passwordNumeric) {
+      console.log ("Password will contain numeric characters."); }
+    else {
+      console.log ("Password will not contain numeric characters.");
+    }
+  }
+  checkNumeric();
+
+  //Prompt for whether you want to include special characters ($@%&*, etc). Log answer in variable and continue to next prompt.
+  function checkSpecial () { 
+    var passwordSpecial = confirm ("Finally, would you like it to contain special characters?  Click OK for yes or Cancel for no.")
+    if (passwordSpecial) {
+      console.log ("Password will contain special characters."); }
+    else {
+      console.log ("Password will not contain special characters.");
+    }
+  }
+  checkSpecial();
+
 }
 
 getPasswordOptions();
 
-//Prompt for whether you want to include uppercase characters. Log answer in variable and continue to next prompt.
 
-  var passwordUppercase = confirm ("And would you like it to contain upper case characters?  Click OK for yes or Cancel for no.")
-
-  if (passwordUppercase) {
-      console.log ("Password will contain upper case letters."); }
-  else {
-      console.log ("Password will not contain upper case letters.");
-  }
-
-//Prompt for whether you want to include numeric characters. Log answer in variable and continue to next prompt.
-
-  var passwordNumeric = confirm ("Just a couple more questions... Would you like it to contain numeric characters?  Click OK for yes or Cancel for no.")
-
-  if (passwordNumeric) {
-      console.log ("Password will contain numeric characters."); }
-  else {
-      console.log ("Password will not contain numeric characters.");
-  }
-
-//Prompt for whether you want to include special characters ($@%&*, etc). Log answer in variable and continue to next prompt.
-
-  var passwordSpecial = confirm ("Finally, would you like it to contain special characters?  Click OK for yes or Cancel for no.")
-
-  if (passwordSpecial) {
-      console.log ("Password will contain special characters."); }
-  else {
-      console.log ("Password will not contain special characters.");
-  }
-
-//If answer is no to all of these, print error handler instructing the user to start again.
-
+//If answer is no to all of these, print error handler instructing the user to start again. If statement perhaps? So IF incorrect value to first - error hander, IF correct, continue to first function. then IF no to each function - another error handler.
+  alert("Click OK to generate your password!");
   console.log ("Password generated.");
 
-//Else generate password based on the criteria selected, displayed in an alert or written to the page.
-
+//Else generate password based on the criteria selected, displayed in an alert or written to the page
