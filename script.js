@@ -121,72 +121,75 @@ alert ("Welcome to the Password Generator!  Select from the following options to
 // Function to prompt user for password options.
 function getPasswordOptions () {
 
-  //Prompt for number of characters. If <8 or >128, print error handler 'try again' message. If between 8-128, store in variable and continue to next prompt.
+  //Prompt for number of characters. If <8 or >128, then show message about requirements and instruct to try again. If between 8-128, store in variable and continue to next prompt.
   function getPasswordLength () {
     var passwordLength = prompt ("How many characters do you want your password to contain?  Choose a number between 8 and 128 inclusive.");
     var passwordLengthInteger = parseInt(passwordLength);
-    if (passwordLengthInteger > 8 && passwordLengthInteger < 128) {
-        console.log ("Password length: " + passwordLengthInteger + " characters.");
-        return passwordLengthInteger; }
-    else {
+
+    if (passwordLengthInteger < 8 || passwordLengthInteger > 128) {
       alert ("Please try again.  Your password needs to be between 8 and 128 characters inclusive.");
       console.log ("Invalid password length");
-      return;     //CHECK THIS BECAUSE THE ELSE ISN'T BEING TRIGGERED TO STOP IT CONTINUING WITH OTHER OPTIONS - OTHER CODE IS OUTSIDE FUNCTION SO STILL RUNS
+      return;
     }
-  }
-  getPasswordLength();
-
-  //Prompt for whether you want to include lowercase characters. Log answer in variable and continue to next prompt.
-  function checkLowercase () {
-    var passwordLowercase = confirm ("Would you like it to contain lower case characters?  Click OK for yes or Cancel for no.")
-    if (passwordLowercase) {
-      console.log ("Password will contain lower case letters."); }
     else {
-      console.log ("Password will not contain lower case letters.");
+      console.log ("Password length: " + passwordLengthInteger + " characters.");
+      function getPasswordCharacters () {
+        //Prompt for whether you want to include lowercase characters. Log answer in variable and continue to next prompt.
+        function checkLowercase () {
+          var passwordLowercase = confirm ("Would you like it to contain lower case characters?  Click OK for yes or Cancel for no.")
+          if (passwordLowercase) {
+            console.log ("Password will contain lower case letters."); }
+          else {
+            console.log ("Password will not contain lower case letters.");
+          }
+        }
+        checkLowercase();
+
+        //Prompt for whether you want to include uppercase characters. Log answer in variable and continue to next prompt.
+        function checkUppercase () {
+          var passwordUppercase = confirm ("And would you like it to contain upper case characters?  Click OK for yes or Cancel for no.")
+          if (passwordUppercase) {
+            console.log ("Password will contain upper case letters."); }
+          else {
+            console.log ("Password will not contain upper case letters.");
+          }
+        }
+        checkUppercase();
+
+        //Prompt for whether you want to include numeric characters. Log answer in variable and continue to next prompt.
+        function checkNumeric () {
+          var passwordNumeric = confirm ("And would you like it to contain numeric characters?  Click OK for yes or Cancel for no.")
+          if (passwordNumeric) {
+            console.log ("Password will contain numeric characters."); }
+          else {
+            console.log ("Password will not contain numeric characters.");
+          }
+        }
+        checkNumeric();
+
+        //Prompt for whether you want to include special characters ($@%&*, etc). Log answer in variable and continue to next prompt.
+        function checkSpecial () { 
+          var passwordSpecial = confirm ("Finally, would you like it to contain special characters?  Click OK for yes or Cancel for no.")
+          if (passwordSpecial) {
+            console.log ("Password will contain special characters."); }
+          else {
+            console.log ("Password will not contain special characters.");
+          }
+        }
+        checkSpecial();
+      }
     }
-  }
-  checkLowercase();
-
-  //Prompt for whether you want to include uppercase characters. Log answer in variable and continue to next prompt.
-  function checkUppercase () {
-    var passwordUppercase = confirm ("And would you like it to contain upper case characters?  Click OK for yes or Cancel for no.")
-    if (passwordUppercase) {
-      console.log ("Password will contain upper case letters."); }
-    else {
-      console.log ("Password will not contain upper case letters.");
+    getPasswordCharacters();
     }
+    getPasswordLength();
   }
-  checkUppercase();
-
-  //Prompt for whether you want to include numeric characters. Log answer in variable and continue to next prompt.
-  function checkNumeric () {
-    var passwordNumeric = confirm ("And would you like it to contain numeric characters?  Click OK for yes or Cancel for no.")
-    if (passwordNumeric) {
-      console.log ("Password will contain numeric characters."); }
-    else {
-      console.log ("Password will not contain numeric characters.");
-    }
-  }
-  checkNumeric();
-
-  //Prompt for whether you want to include special characters ($@%&*, etc). Log answer in variable and continue to next prompt.
-  function checkSpecial () { 
-    var passwordSpecial = confirm ("Finally, would you like it to contain special characters?  Click OK for yes or Cancel for no.")
-    if (passwordSpecial) {
-      console.log ("Password will contain special characters."); }
-    else {
-      console.log ("Password will not contain special characters.");
-    }
-  }
-  checkSpecial();
-
-}
-
+    
 getPasswordOptions();
 
+//IF answer is FALSE to all of the questions about character types, print message instructing the user to start again. If statement? Consider how to get the user back to the start.
+//ELSE give alert telling them to click on the Generate Password button below.
 
-//If answer is no to all of these, print error handler instructing the user to start again. If statement perhaps? So IF incorrect value to first - error hander, IF correct, continue to first function. then IF no to each function - another error handler.
-  alert("Click OK to generate your password!");
-  console.log ("Password generated.");
+alert("Now click on the Generate Password button below");
 
-//Else generate password based on the criteria selected, displayed in an alert or written to the page
+
+
