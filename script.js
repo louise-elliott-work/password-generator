@@ -88,12 +88,14 @@ var upperCasedCharacters = [
     'Z'
 ];
 
-// Function for getting a random element from an array
-function getRandom(arr) {
-}
+// Combined array
+var combinedArray = lowerCasedCharacters.concat(upperCasedCharacters, specialCharacters, numericCharacters);
 
-// Function to generate password with user input
-function generatePassword() {
+var newPassword;
+
+// Function for getting a random element from an array
+function getRandom(combinedArray) {
+  return combinedArray;
 }
 
 // Get references to the #generate element
@@ -113,7 +115,6 @@ generateBtn.addEventListener('onclick', writePassword);
 
 //MY PSEUDOCODING
 
-
 //variables for user choice
 var passwordLength;
 var passwordLengthInteger;
@@ -121,6 +122,8 @@ var lowercase = false;
 var uppercase = false;
 var numeric = false;
 var special = false;
+var combinedArray;
+var combinedArrayString;
 
 // Function to prompt user for password options.
 generateBtn.onclick = function getPasswordOptions () {
@@ -133,7 +136,6 @@ generateBtn.onclick = function getPasswordOptions () {
 
     if (passwordLengthInteger < 8 || passwordLengthInteger > 128) {
       alert ("Please try again.  Your password needs to be between 8 and 128 characters inclusive.");
-      console.log ("Invalid password length");
       return;
     }
     else {
@@ -201,12 +203,30 @@ generateBtn.onclick = function getPasswordOptions () {
 
     //If the answer is negative to all of the questions about character types, give alert instructing the user to start again.
     if (lowercase === false && uppercase === false && numeric === false && special === false) {
-      console.log("No character selection made");
       alert ("Please try again.  Your password needs to be contain at least one character type.");
     }
     //ELSE generate password (generatePassword function?)
     else {
       console.log("Password to be generated");
-    }
+      
+      if (lowercase === true && uppercase === true && numeric === true && special === true) {
+        combinedArray = lowerCasedCharacters.concat(upperCasedCharacters, specialCharacters, numericCharacters);
+        combinedArrayString = combinedArray.toString();
+
+        //Check values being referenced
+        console.log("Combined array = " + combinedArray);
+        console.log("Combined array string = " + combinedArrayString);
+        
+        //Take random values to create new string of specified length
+        //Need to create FOR LOOP so the password is of the specified length rather than just one character
+        var newPassword;
+        newPassword = combinedArray[Math.floor(Math.random() * combinedArray.length)];
+        console.log("Password length integer = " + passwordLengthInteger);
+        console.log("New password = " + newPassword);
+        
+        }
 
   }
+  
+  }
+
