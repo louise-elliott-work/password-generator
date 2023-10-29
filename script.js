@@ -88,8 +88,6 @@ var upperCasedCharacters = [
     'Z'
 ];
 
-
-
 // Function for getting a random element from an array
 function getRandom(arr) {
 }
@@ -110,18 +108,28 @@ passwordText.value = password;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+generateBtn.addEventListener('onclick', writePassword);
 
 
 //MY PSEUDOCODING
 
+
+//variables for user choice
+var passwordLength;
+var passwordLengthInteger;
+var lowercase = false;
+var uppercase = false;
+var numeric = false;
+var special = false;
+
 // Function to prompt user for password options.
 generateBtn.onclick = function getPasswordOptions () {
 
+
   //Prompt for number of characters. If <8 or >128, then show message about requirements and instruct to try again. If between 8-128, store in variable and continue to next prompt.
   function getPasswordLength () {
-    var passwordLength = prompt ("How many characters do you want your password to contain?  Choose a number between 8 and 128 inclusive.");
-    var passwordLengthInteger = parseInt(passwordLength);
+    passwordLength = prompt ("How many characters do you want your password to contain?  Choose a number between 8 and 128 inclusive.");
+    passwordLengthInteger = parseInt(passwordLength);
 
     if (passwordLengthInteger < 8 || passwordLengthInteger > 128) {
       alert ("Please try again.  Your password needs to be between 8 and 128 characters inclusive.");
@@ -131,11 +139,14 @@ generateBtn.onclick = function getPasswordOptions () {
     else {
       console.log ("Password length: " + passwordLengthInteger + " characters.");
       function getPasswordCharacters () {
+        
         //Prompt for whether you want to include lowercase characters. Log answer in variable and continue to next prompt.
         function checkLowercase () {
           var passwordLowercase = confirm ("Would you like it to contain lower case characters?  Click OK for yes or Cancel for no.")
           if (passwordLowercase) {
-            console.log ("Password will contain lower case letters."); }
+            console.log ("Password will contain lowercase letters.");
+            return lowercase = true;
+          }
           else {
             console.log ("Password will not contain lower case letters.");
           }
@@ -146,7 +157,10 @@ generateBtn.onclick = function getPasswordOptions () {
         function checkUppercase () {
           var passwordUppercase = confirm ("And would you like it to contain upper case characters?  Click OK for yes or Cancel for no.")
           if (passwordUppercase) {
-            console.log ("Password will contain upper case letters."); }
+            console.log ("Password will contain upper case letters."); 
+            uppercase++;
+            return uppercase = true;
+          }
           else {
             console.log ("Password will not contain upper case letters.");
           }
@@ -157,7 +171,9 @@ generateBtn.onclick = function getPasswordOptions () {
         function checkNumeric () {
           var passwordNumeric = confirm ("And would you like it to contain numeric characters?  Click OK for yes or Cancel for no.")
           if (passwordNumeric) {
-            console.log ("Password will contain numeric characters."); }
+            console.log ("Password will contain numeric characters."); 
+            return numeric = true;
+          }
           else {
             console.log ("Password will not contain numeric characters.");
           }
@@ -168,25 +184,29 @@ generateBtn.onclick = function getPasswordOptions () {
         function checkSpecial () { 
           var passwordSpecial = confirm ("Finally, would you like it to contain special characters?  Click OK for yes or Cancel for no.")
           if (passwordSpecial) {
-            console.log ("Password will contain special characters."); }
+            console.log ("Password will contain special characters.");
+            return special = true;
+          }
           else {
             console.log ("Password will not contain special characters.");
           }
         }
         checkSpecial();
+
       }
     }
     getPasswordCharacters();
     }
     getPasswordLength();
+
+    //If the answer is negative to all of the questions about character types, give alert instructing the user to start again.
+    if (lowercase === false && uppercase === false && numeric === false && special === false) {
+      console.log("No character selection made");
+      alert ("Please try again.  Your password needs to be contain at least one character type.");
+    }
+    //ELSE generate password (generatePassword function?)
+    else {
+      console.log("Password to be generated");
+    }
+
   }
-    
-getPasswordOptions();
-
-//IF answer is FALSE to all of the questions about character types, print message instructing the user to start again. If statement? Consider how to get the user back to the start.
-//ELSE give alert telling them to click on the Generate Password button below.
-
-alert("Now click on the Generate Password button below");
-
-
-
