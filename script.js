@@ -91,8 +91,6 @@ var upperCasedCharacters = [
 // Combined array
 var combinedArray = lowerCasedCharacters.concat(upperCasedCharacters, specialCharacters, numericCharacters);
 
-var newPassword;
-
 // Function for getting a random element from an array
 function getRandom(combinedArray) {
   return combinedArray;
@@ -101,19 +99,10 @@ function getRandom(combinedArray) {
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
-// Write password to the #password input
-function writePassword() {
-var password = generatePassword();
-var passwordText = document.querySelector('#password');
-
-passwordText.value = password;
-}
-
 // Add event listener to generate button
 generateBtn.addEventListener('onclick', writePassword);
 
-
-//MY PSEUDOCODING
+//MY CODING
 
 //variables for user choice
 var passwordLength;
@@ -126,6 +115,8 @@ var combinedArray;
 var combinedArrayString;
 var newPassword = [];
 var characters = [];
+var writePassword;
+var password;
 
 // Function to prompt user for password options.
 generateBtn.onclick = function getPasswordOptions () {
@@ -215,6 +206,12 @@ generateBtn.onclick = function getPasswordOptions () {
   }
   getPasswordLength();
 
+
+
+
+
+    function generatePassword () {
+
       if (lowercase === true && uppercase === true && numeric === true && special === true) {
         combinedArray = lowerCasedCharacters.concat(upperCasedCharacters, specialCharacters, numericCharacters);
         combinedArrayString = combinedArray.toString();
@@ -222,6 +219,7 @@ generateBtn.onclick = function getPasswordOptions () {
         //Take random values to create new string of specified length
 
         for (var i = 0; i < (passwordLengthInteger); i++) {
+          
         characters = combinedArray[Math.floor(Math.random() * combinedArray.length)];
         newPassword.push(characters);
         }
@@ -229,8 +227,25 @@ generateBtn.onclick = function getPasswordOptions () {
         newPassword=newPassword.join('');
 
         console.log("New password = " + newPassword);
-        return;
+        
         }
-  
+      }
+
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector('#password');
+  password = newPassword;
+  passwordText.value = password;
   }
   
+  writePassword();
+
+
+    }
+
+
+
+
+        
