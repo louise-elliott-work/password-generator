@@ -104,7 +104,7 @@ var uppercase = false;
 var numeric = false;
 var special = false;
 var combinedArray;
-var newPassword = [];
+var userPassword = [];
 var characters = [];
 var writePassword;
 var password;
@@ -127,37 +127,25 @@ generateBtn.onclick = function getPasswordOptions () {
         
         //Prompt for whether you want to include lowercase characters. Log answer in variable and continue to next prompt.
         function checkLowercase () {
-          var passwordLowercase = confirm ("Would you like it to contain lower case characters?  Click OK for yes or Cancel for no.")
-          if (passwordLowercase) {
-            return lowercase = true;
-          }
+          lowercase = confirm ("Would you like it to contain lower case characters?  Click OK for yes or Cancel for no.")
         }
         checkLowercase();
 
         //Prompt for whether you want to include uppercase characters. Log answer in variable and continue to next prompt.
         function checkUppercase () {
-          var passwordUppercase = confirm ("And would you like it to contain upper case characters?  Click OK for yes or Cancel for no.")
-          if (passwordUppercase) {
-            return uppercase = true;
-          }
+          uppercase = confirm ("And would you like it to contain upper case characters?  Click OK for yes or Cancel for no.")
         }
         checkUppercase();
 
         //Prompt for whether you want to include numeric characters. Log answer in variable and continue to next prompt.
         function checkNumeric () {
-          var passwordNumeric = confirm ("And would you like it to contain numeric characters?  Click OK for yes or Cancel for no.")
-          if (passwordNumeric) {
-            return numeric = true;
-          }
+          numeric = confirm ("And would you like it to contain numeric characters?  Click OK for yes or Cancel for no.")
         }
         checkNumeric();
 
         //Prompt for whether you want to include special characters ($@%&*, etc). Log answer in variable and continue to next prompt.
         function checkSpecial () { 
-          var passwordSpecial = confirm ("Finally, would you like it to contain special characters?  Click OK for yes or Cancel for no.")
-          if (passwordSpecial) {
-            return special = true;
-          }
+          special = confirm ("Finally, would you like it to contain special characters?  Click OK for yes or Cancel for no.")
         }
         checkSpecial();
 
@@ -203,9 +191,9 @@ combinedArray = combinedArray.replace(/,/g, "");
 
         for (var i = 0; i < (passwordLengthInteger); i++) {
         characters = combinedArray[Math.floor(Math.random() * combinedArray.length)];
-        newPassword.push(characters);
+        userPassword.push(characters);
         }
-        newPassword=newPassword.join('');
+        userPassword=userPassword.join('');
       }
 
 
@@ -213,7 +201,7 @@ combinedArray = combinedArray.replace(/,/g, "");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
-  password = newPassword;
+  password = userPassword;
   passwordText.value = password;
   }
   
@@ -223,6 +211,5 @@ function writePassword() {
     }
 
 
-
-
+//TODO ensure process resets so users can use it repeatedly without refreshing the page
         
