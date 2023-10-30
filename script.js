@@ -124,6 +124,8 @@ var numeric = false;
 var special = false;
 var combinedArray;
 var combinedArrayString;
+var newPassword = [];
+var characters = [];
 
 // Function to prompt user for password options.
 generateBtn.onclick = function getPasswordOptions () {
@@ -198,35 +200,37 @@ generateBtn.onclick = function getPasswordOptions () {
       }
     }
     getPasswordCharacters();
-    }
-    getPasswordLength();
+
 
     //If the answer is negative to all of the questions about character types, give alert instructing the user to start again.
     if (lowercase === false && uppercase === false && numeric === false && special === false) {
       alert ("Please try again.  Your password needs to be contain at least one character type.");
+      return;
     }
     //ELSE generate password (generatePassword function?)
     else {
       console.log("Password to be generated");
-      
+    }
+
+  }
+  getPasswordLength();
+
       if (lowercase === true && uppercase === true && numeric === true && special === true) {
         combinedArray = lowerCasedCharacters.concat(upperCasedCharacters, specialCharacters, numericCharacters);
         combinedArrayString = combinedArray.toString();
-
-        //Check values being referenced
-        console.log("Combined array = " + combinedArray);
-        console.log("Combined array string = " + combinedArrayString);
         
         //Take random values to create new string of specified length
-        //Need to create FOR LOOP so the password is of the specified length rather than just one character
-        var newPassword;
-        newPassword = combinedArray[Math.floor(Math.random() * combinedArray.length)];
-        console.log("Password length integer = " + passwordLengthInteger);
-        console.log("New password = " + newPassword);
-        
+
+        for (var i = 0; i < (passwordLengthInteger); i++) {
+        characters = combinedArray[Math.floor(Math.random() * combinedArray.length)];
+        newPassword.push(characters);
         }
 
-  }
+        newPassword=newPassword.join('');
+
+        console.log("New password = " + newPassword);
+        return;
+        }
   
   }
-
+  
