@@ -88,13 +88,6 @@ var upperCasedCharacters = [
     'Z'
 ];
 
-// Combined array
-var combinedArray = lowerCasedCharacters.concat(upperCasedCharacters, specialCharacters, numericCharacters);
-
-// Function for getting a random element from an array
-function getRandom(combinedArray) {
-  return combinedArray;
-}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -112,7 +105,6 @@ var uppercase = false;
 var numeric = false;
 var special = false;
 var combinedArray;
-var combinedArrayString;
 var newPassword = [];
 var characters = [];
 var writePassword;
@@ -130,6 +122,7 @@ generateBtn.onclick = function getPasswordOptions () {
     if (passwordLengthInteger < 8 || passwordLengthInteger > 128) {
       alert ("Please try again.  Your password needs to be between 8 and 128 characters inclusive.");
       return;
+      //TODO ENSURE THAT IF NO LENGTH IS SPECIFIED, THE PROCESS STOPS. At the moment it continues and so throws errors.
     }
     else {
       console.log ("Password length: " + passwordLengthInteger + " characters.");
@@ -212,9 +205,24 @@ generateBtn.onclick = function getPasswordOptions () {
 
     function generatePassword () {
 
-      if (lowercase === true && uppercase === true && numeric === true && special === true) {
-        combinedArray = lowerCasedCharacters.concat(upperCasedCharacters, specialCharacters, numericCharacters);
-        combinedArrayString = combinedArray.toString();
+//TODO recode if function here so that all iterations are accounted for in the combined array used for the password character selection
+
+if(lowercase){
+  combinedArray += lowerCasedCharacters
+}
+if(uppercase){
+  combinedArray += upperCasedCharacters
+}
+if(special){
+  combinedArray += specialCharacters
+}
+if(numeric){
+  combinedArray += numericCharacters
+}
+
+
+
+
         
         //Take random values to create new string of specified length
 
@@ -228,7 +236,7 @@ generateBtn.onclick = function getPasswordOptions () {
 
         console.log("New password = " + newPassword);
         
-        }
+        
       }
 
 
