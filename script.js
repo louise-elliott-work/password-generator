@@ -96,8 +96,6 @@ var generateBtn = document.querySelector('#generate');
 // Add event listener to generate button
 generateBtn.addEventListener('onclick', writePassword);
 
-//MY CODING
-
 //variables for user choice
 var passwordLength;
 var passwordLengthInteger;
@@ -114,30 +112,24 @@ var password;
 // Function to prompt user for password options.
 generateBtn.onclick = function getPasswordOptions () {
 
-
-  //Prompt for number of characters. If <8 or >128, then show message about requirements and instruct to try again. If between 8-128, store in variable and continue to next prompt.
+  //Prompt for number of characters.
   function getPasswordLength () {
     passwordLength = prompt ("How many characters do you want your password to contain?  Choose a number between 8 and 128 inclusive.");
     passwordLengthInteger = parseInt(passwordLength);
-
-    if (passwordLengthInteger < 8 || passwordLengthInteger > 128) {
-      alert ("Please try again.  Your password needs to be between 8 and 128 characters inclusive.");
-      return;
-      //TODO ENSURE THAT IF NO LENGTH IS SPECIFIED, THE PROCESS STOPS. At the moment it continues and so throws errors.
+    //If no value is entered <8 or >128, then show message about requirements and instruct to try again. If between 8-128, store in variable and continue to next prompt.
+    //TODO ensure value entered is a number - otherwise a word could be written and the process would continue
+    if (passwordLength === "" || passwordLengthInteger < 8 || passwordLengthInteger > 128) {
+    alert ("Please try again.  Your password needs to be between 8 and 128 characters inclusive.");
+    return;
     }
     else {
-      console.log ("Password length: " + passwordLengthInteger + " characters.");
       function getPasswordCharacters () {
         
         //Prompt for whether you want to include lowercase characters. Log answer in variable and continue to next prompt.
         function checkLowercase () {
           var passwordLowercase = confirm ("Would you like it to contain lower case characters?  Click OK for yes or Cancel for no.")
           if (passwordLowercase) {
-            console.log ("Password will contain lowercase letters.");
             return lowercase = true;
-          }
-          else {
-            console.log ("Password will not contain lower case letters.");
           }
         }
         checkLowercase();
@@ -146,12 +138,7 @@ generateBtn.onclick = function getPasswordOptions () {
         function checkUppercase () {
           var passwordUppercase = confirm ("And would you like it to contain upper case characters?  Click OK for yes or Cancel for no.")
           if (passwordUppercase) {
-            console.log ("Password will contain upper case letters."); 
-            uppercase++;
             return uppercase = true;
-          }
-          else {
-            console.log ("Password will not contain upper case letters.");
           }
         }
         checkUppercase();
@@ -160,11 +147,7 @@ generateBtn.onclick = function getPasswordOptions () {
         function checkNumeric () {
           var passwordNumeric = confirm ("And would you like it to contain numeric characters?  Click OK for yes or Cancel for no.")
           if (passwordNumeric) {
-            console.log ("Password will contain numeric characters."); 
             return numeric = true;
-          }
-          else {
-            console.log ("Password will not contain numeric characters.");
           }
         }
         checkNumeric();
@@ -173,11 +156,7 @@ generateBtn.onclick = function getPasswordOptions () {
         function checkSpecial () { 
           var passwordSpecial = confirm ("Finally, would you like it to contain special characters?  Click OK for yes or Cancel for no.")
           if (passwordSpecial) {
-            console.log ("Password will contain special characters.");
             return special = true;
-          }
-          else {
-            console.log ("Password will not contain special characters.");
           }
         }
         checkSpecial();
@@ -191,10 +170,6 @@ generateBtn.onclick = function getPasswordOptions () {
     if (lowercase === false && uppercase === false && numeric === false && special === false) {
       alert ("Please try again.  Your password needs to be contain at least one character type.");
       return;
-    }
-    //ELSE generate password (generatePassword function?)
-    else {
-      console.log("Password to be generated");
     }
 
   }
@@ -230,12 +205,7 @@ combinedArray = combinedArray.replace(/,/g, "");
         characters = combinedArray[Math.floor(Math.random() * combinedArray.length)];
         newPassword.push(characters);
         }
-
         newPassword=newPassword.join('');
-        console.log(combinedArray);
-        console.log("New password = " + newPassword);
-        
-        
       }
 
 
