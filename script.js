@@ -114,38 +114,38 @@ generateBtn.onclick = function getPasswordOptions () {
 
   //Prompt for number of characters.
   function getPasswordLength () {
-    passwordLength = prompt ("How many characters do you want your password to contain?  Choose a number between 8 and 128 inclusive.");
+    passwordLength = prompt ("How many characters do you want your password to contain?\nChoose a number between 8 and 128 inclusive.");
     passwordLengthInteger = parseInt(passwordLength);
-    //If no value is entered <8 or >128, then show message about requirements and instruct to try again. If between 8-128, store in variable and continue to next prompt.
-    //TODO ensure value entered is a number - otherwise a word could be written and the process would continue
-    if (passwordLength === "" || passwordLengthInteger < 8 || passwordLengthInteger > 128) {
-    alert ("Please try again.  Your password needs to be between 8 and 128 characters inclusive.");
+    //If value is not a number, or if no value is entered <8 or >128, then show message about requirements and instruct to try again.
+    if (isNaN(passwordLength) || passwordLengthInteger < 8 || passwordLengthInteger > 128) {
+    alert ("Please try again.\nYou must enter a number between 8 and 128 inclusive.");
     return;
     }
+    //If the value is entered as a number between 8-128, store in a variable and continue to the next prompt.
     else {
       function getPasswordCharacters () {
         
         //Prompt for whether you want to include lowercase characters. Log answer in variable and continue to next prompt.
         function checkLowercase () {
-          lowercase = confirm ("Would you like it to contain lower case characters?  Click OK for yes or Cancel for no.")
+          lowercase = confirm ("Would you like it to contain lower case characters?\nClick OK for yes or Cancel for no.")
         }
         checkLowercase();
 
         //Prompt for whether you want to include uppercase characters. Log answer in variable and continue to next prompt.
         function checkUppercase () {
-          uppercase = confirm ("And would you like it to contain upper case characters?  Click OK for yes or Cancel for no.")
+          uppercase = confirm ("And would you like it to contain upper case characters?\nClick OK for yes or Cancel for no.")
         }
         checkUppercase();
 
         //Prompt for whether you want to include numeric characters. Log answer in variable and continue to next prompt.
         function checkNumeric () {
-          numeric = confirm ("And would you like it to contain numeric characters?  Click OK for yes or Cancel for no.")
+          numeric = confirm ("And would you like it to contain numeric characters?\nClick OK for yes or Cancel for no.")
         }
         checkNumeric();
 
         //Prompt for whether you want to include special characters ($@%&*, etc). Log answer in variable and continue to next prompt.
         function checkSpecial () { 
-          special = confirm ("Finally, would you like it to contain special characters?  Click OK for yes or Cancel for no.")
+          special = confirm ("Finally, would you like it to contain special characters?\nClick OK for yes or Cancel for no.")
         }
         checkSpecial();
 
@@ -156,7 +156,7 @@ generateBtn.onclick = function getPasswordOptions () {
 
     //If the answer is negative to all of the questions about character types, give alert instructing the user to start again.
     if (lowercase === false && uppercase === false && numeric === false && special === false) {
-      alert ("Please try again.  Your password needs to be contain at least one character type.");
+      alert ("Please try again.\nYour password needs to be contain at least one character type.");
       return;
     }
 
