@@ -25,6 +25,7 @@ var specialCharacters = [
     '.'
 ];
 
+
   // Array of numeric characters to be included in password
 var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -205,7 +206,7 @@ generateBtn.onclick = function getPasswordOptions () {
 
     function generatePassword () {
 
-//TODO recode if function here so that all iterations are accounted for in the combined array used for the password character selection
+//All iterations are accounted for in the combined array used for the password character selection
 
 if(lowercase){
   combinedArray += lowerCasedCharacters
@@ -220,20 +221,18 @@ if(numeric){
   combinedArray += numericCharacters
 }
 
-
-
+combinedArray = combinedArray.replace(/,/g, "");
 
         
         //Take random values to create new string of specified length
 
         for (var i = 0; i < (passwordLengthInteger); i++) {
-          
         characters = combinedArray[Math.floor(Math.random() * combinedArray.length)];
         newPassword.push(characters);
         }
 
         newPassword=newPassword.join('');
-
+        console.log(combinedArray);
         console.log("New password = " + newPassword);
         
         
