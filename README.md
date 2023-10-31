@@ -28,7 +28,7 @@ Once the prompts have been answered, the password is generated and displayed in 
 
 The process can be used repeatedly without the need to refresh the web browser.
 
-Screenshot: ![Password Generator screenshot](/images/process-screenshots.pdf)
+Screenshot: ![Password Generator screenshot](images/process-screenshots.pdf)
 
 Website: https://louise-elliott-work.github.io/password-generator
 
