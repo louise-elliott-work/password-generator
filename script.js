@@ -135,7 +135,6 @@ function generatePassword () {
     if (passwordLength == 0 || isNaN(passwordLength) || passwordLengthInteger < 8 || passwordLengthInteger >= 128) {
       alert ("Please try again.\nYou must enter a number between 8 and 128 inclusive.");
       passwordLengthCheck = false;
-      console.log ("Password length check: " + passwordLengthCheck);
     }
 
     // If the value is entered as a number between 8-128, store that in a variable and continue to the next prompt.
@@ -201,7 +200,6 @@ function generatePassword () {
               // Remove commas so password is one new concatenated string.
       }
       getRandom();
-
     }
 
     // Write password to the #password input so it displays on the screen.
@@ -212,11 +210,10 @@ function generatePassword () {
     }
     writePassword();
 
+  //Clear the password variable to allow the password generator to be used multiple times without the need to refresh the webpage.
+  password = password = [];  
+
   }
 
 }
 generatePassword ();
-
-//TODO ensure process resets so users can use it repeatedly without refreshing the page
-
-          
