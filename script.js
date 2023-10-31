@@ -1,91 +1,91 @@
-// Array of special characters to be included in password.
-var specialCharacters = [
-    '@',
-    '%',
-    '+',
-    '\\',
-    '/',
-    "'",
-    '!',
-    '#',
-    '$',
-    '^',
-    '?',
-    ':',
-    ',',
-    ')',
-    '(',
-    '}',
-    '{',
-    ']',
-    '[',
-    '~',
-    '-',
-    '_',
-    '.'
-];
-
-  // Array of numeric characters to be included in password.
-var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-  // Array of lowercase characters to be included in password.
+// Array of lowercase characters to be included in password.
 var lowerCasedCharacters = [
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p',
-    'q',
-    'r',
-    's',
-    't',
-    'u',
-    'v',
-    'w',
-    'x',
-    'y',
-    'z'
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z'
 ];
 
 // Array of uppercase characters to be included in password.
 var upperCasedCharacters = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z'
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z'
+];
+
+// Array of numeric characters to be included in password.
+var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+// Array of special characters to be included in password.
+var specialCharacters = [
+  '@',
+  '%',
+  '+',
+  '\\',
+  '/',
+  "'",
+  '!',
+  '#',
+  '$',
+  '^',
+  '?',
+  ':',
+  ',',
+  ')',
+  '(',
+  '}',
+  '{',
+  ']',
+  '[',
+  '~',
+  '-',
+  '_',
+  '.'
 ];
 
 // Removal of commas so only the characters are selected for the password.
@@ -100,8 +100,8 @@ var generateBtn = document.querySelector('#generate');
 // Add event listener to generate button.
 generateBtn.addEventListener('onclick', writePassword);
 
-// Variables for user choice.
 //TODO check these at the end to move any locally as appropriate
+// Variables for user choice.
 var passwordLength;
 var passwordLengthCheck = true;
 var passwordLengthInteger;
@@ -111,9 +111,8 @@ var numeric = false;
 var special = false;
 var combinedArray = [];
 var characters = [];
-var userPassword = [];
 var writePassword;
-var password;
+var password = [];
 
 // Function to generate password based on user choices.
 function generatePassword () {
@@ -190,38 +189,34 @@ function generatePassword () {
         }
       }
       getPasswordCharacters();
-    
-          // TODO Finish tests as password is no longer displaying - check writePassword function and the values it is and isn't accessing.
-          console.log(combinedArray);
-          console.log(passwordLengthInteger);
-          console.log(characters);
-          console.log(userPassword);
 
-  // Write password to the #password input so it displays on the screen.
-      function writePassword() {        
-        // Take random values to create a new string of the specified length.
-        for (var i = 0; i < (passwordLengthInteger); i++) {
-          characters = combinedArray[Math.floor(Math.random() * combinedArray.length)];
-          userPassword.push(characters);
-          // Remove commas so password is one new concatenated string.
-          userPassword=userPassword.join('');
-          return userPassword;
-          }
-
-
-
-        var password = generatePassword();
-        var passwordText = document.querySelector('#password');
-        password = userPassword;
-        passwordText.value = password;
+      // Function for getting a random element from an array
+      function getRandom() {
+            // Take random values to create a new string of the specified length.
+            for (var i = 0; i < (passwordLengthInteger); i++) {
+              characters = combinedArray[Math.floor(Math.random() * combinedArray.length)];
+              password.push(characters);
+              }
+              password=password.join('');
+              // Remove commas so password is one new concatenated string.
       }
-      writePassword();
-    
+      getRandom();
+
     }
+
+    // Write password to the #password input so it displays on the screen.
+    // TODO add here to only write if valid choices made, if not error message? check instructions!
+    function writePassword() { 
+      var passwordText = document.querySelector('#password');
+      passwordText.value = password;
+    }
+    writePassword();
+
   }
 
 }
 generatePassword ();
-  
+
 //TODO ensure process resets so users can use it repeatedly without refreshing the page
-        
+
+          
