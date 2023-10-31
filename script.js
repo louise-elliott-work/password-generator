@@ -124,7 +124,7 @@ function generatePassword () {
     passwordLengthInteger = parseInt(passwordLength);
 
     // If no value given, or value is not an integer or is an integer <8 or >128, give alert.
-    if (passwordLength == 0 || isNaN(passwordLength) || passwordLengthInteger < 8 || passwordLengthInteger > 128) {
+    if (passwordLength === null || passwordLength == 0 || isNaN(passwordLength) || passwordLengthInteger < 8 || passwordLengthInteger > 128) {
       alert ("Please try again.\nYou must enter a number between 8 and 128 inclusive.");
     }
 
